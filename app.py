@@ -8,7 +8,7 @@ import threading, queue, os
 load_dotenv()
 uri = os.getenv("MONGO_URI")
 
-client = MongoClient(uri)
+client = MongoClient(uri, tls=True, tlsAllowInvalidCertificates=True)
 db = client["Testing"]
 collection = db["users"]
 
