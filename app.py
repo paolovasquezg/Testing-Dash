@@ -27,6 +27,7 @@ def load_data():
     return pd.DataFrame(list(collection.find({}, {"_id": 0})))
 
 app = Dash(__name__)
+server = app.server   # 💥 Necesario para Gunicorn en Render
 
 AESTHETIC_CSS = {
     "fontFamily": "Montserrat, sans-serif",
@@ -123,4 +124,4 @@ def update_dashboard(_):
     return table, fig_age, fig_country
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run_server(debug=True) 
